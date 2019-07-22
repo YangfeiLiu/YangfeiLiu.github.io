@@ -102,5 +102,7 @@ class DownsamplerBlock (nn.Module):
 ### 参考：
 
 [1] [LEDNET: A LIGHTWEIGHT ENCODER-DECODER NETWORK FOR REAL-TIME SEMANTIC SEGMENTATION](https://arxiv.org/abs/1905.02423)
+
 [2] [pytorch 实现](https://github.com/xiaoyufenfei/LEDNet)
+
 [3] [keras 实现](https://github.com/xidian-liuyangfei/SegmentationNet)
