@@ -21,7 +21,7 @@ tags:
 
 网络框架由两个CNNs组成，一个是生成器，另一个是判别器。
 
-![model](E:\blogs\xidian-liuyangfei.github.io\img\20190715\model.png)
+![model](/img/20190715/model.png)
 
 ​	生成器的作用是将一张真实世界的图像映射到卡通图像，生成网络以一个flat convolution开始，后面跟着两个down-convolution来做空间压缩和图像编码，在这个过程中提取了有用的局部信息，最后使用8个残差块来构建内容和主要的特征信息，最后通过up-convolution来重建卡通图像。
 
@@ -35,7 +35,7 @@ tags:
 
 2. content loss，在映射过程中能够保护图像内容。
 
-   因此损失函数就是 \\
+因此损失函数就是 \\
    $$
    L(G,D) = L_{adv}(G, D) + \omega L_{con}(G,D)
    $$
@@ -53,7 +53,7 @@ tags:
 
 处理完的图像如下所示
 
-![edge](E:\blogs\xidian-liuyangfei.github.io\img\20190715\edge.png)
+![edge](/img/20190715/edge.png)
 
 最后，定义了一个edge-promoting adversarial loss:
 $$
@@ -76,17 +76,17 @@ $$
 
 我们知道生成器的任务就是以卡通的风格重建真实图像而保留重要的内容信息。出于这个目的，在预训练阶段，只用content loss来训练生成器。这个trick帮助模型更快的收敛到一个最优结果。预训练结果如图
 
-![initialzation](E:\blogs\xidian-liuyangfei.github.io\img\20190715\intialization.png)
+![initialzation](/img/20190715/intialization.png)
 
 ### 实验结果
 
-![result1](E:\blogs\xidian-liuyangfei.github.io\img\20190715\result1.png)
+![result1](/img/20190715/result1.png)
 
-![result2](E:\blogs\xidian-liuyangfei.github.io\img\20190715\result2.png)
+![result2](/img/20190715/result2.png)
 
-![result3](E:\blogs\xidian-liuyangfei.github.io\img\20190715\result3.png)
+![result3](/img/20190715/result3.png)
 
-![result4](E:\blogs\xidian-liuyangfei.github.io\img\20190715\result4.png)
+![result4](/img/20190715/result4.png)
 
 ### 参考
 
