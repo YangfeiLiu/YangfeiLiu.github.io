@@ -35,12 +35,12 @@ tags:
 
 2. content loss，在映射过程中能够保护图像内容。
 
-因此损失函数就是 \\
+因此损失函数就是
+
    $$
    L(G,D) = L_{adv}(G, D) + \omega L_{con}(G,D)
    $$
    
-
    w用来平衡两个损失函数，w大使得保留更多的内容信息，但是肯定也会影响映射的效果。在实验中令w=10。
 
 ##### adversarial loss
@@ -56,6 +56,7 @@ tags:
 ![edge](/img/20190715/edge.png)
 
 最后，定义了一个edge-promoting adversarial loss:
+
 $$
 \begin{equation}
 \begin{split}
@@ -93,6 +94,8 @@ $$
 ### 参考
 
 [1] pytorch CartoonGAN[实现](https://github.com/znxlwm/pytorch-CartoonGAN)
+
 [2] Tensorflow [实现](https://github.com/taki0112/CartoonGAN-Tensorflow)
+
 [3] [文章链接](http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf)
 
