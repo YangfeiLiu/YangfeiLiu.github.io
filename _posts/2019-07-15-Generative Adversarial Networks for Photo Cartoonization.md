@@ -67,9 +67,11 @@ $$
 ##### content loss
 
 在CartoonGAN中为了保护内容信息，采用VGG网络中的高层特征信息。
+
 $$
 L_{con}(G,D)=E_{p_i\sim S_{data}(p)}[||VGG_l(G(p_i))-VGG_l(p_i)||_1]
 $$
+
 采用l1 loss的原因是卡通图像的特征：清晰的边界和平滑的阴影。采用了"conv4_4"层的特征来计算content loss。
 
 ##### 一个重要的trick: Initialization phase
@@ -91,8 +93,6 @@ $$
 ### 参考
 
 [1] pytorch CartoonGAN[实现](https://github.com/znxlwm/pytorch-CartoonGAN)
-
 [2] Tensorflow [实现](https://github.com/taki0112/CartoonGAN-Tensorflow)
-
 [3] [文章链接](http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf)
 
