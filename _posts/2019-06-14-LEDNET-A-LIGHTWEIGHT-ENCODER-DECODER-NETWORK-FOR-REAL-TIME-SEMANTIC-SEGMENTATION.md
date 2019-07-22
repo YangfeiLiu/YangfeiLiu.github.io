@@ -65,7 +65,7 @@ class DownsamplerBlock (nn.Module):
 
 1. SS-bt module：
 
-   ![ss-bt](/img/20190614/ss-bt.png)
+   ![ss-bt](/img/20190614/SS-bt.png)
 
    上图最右边就是提出的 split shuffle bottleneck 模块。首先将input分成两个分支，每个分支的channels是input的一半，然后分别对每个分支做卷积操作，将特征图做concat，接着加上input，最后做 channel shuffle操作来促进两个分支的信息沟通。
    
@@ -101,8 +101,6 @@ class DownsamplerBlock (nn.Module):
 
 ### 参考：
 
-[1] LEDNET: A LIGHTWEIGHT ENCODER-DECODER NETWORK FOR REAL-TIME SEMANTIC SEGMENTATION (https://arxiv.org/abs/1905.02423)
-
-[2] pytorch 实现 (https://github.com/xiaoyufenfei/LEDNet)
-
-[3] keras 实现 (https://github.com/xidian-liuyangfei/SegmentationNet)
+[1] [LEDNET: A LIGHTWEIGHT ENCODER-DECODER NETWORK FOR REAL-TIME SEMANTIC SEGMENTATION](https://arxiv.org/abs/1905.02423)
+[2] [pytorch 实现](https://github.com/xiaoyufenfei/LEDNet)
+[3] [keras 实现](https://github.com/xidian-liuyangfei/SegmentationNet)
