@@ -43,7 +43,7 @@ tags:
 1. **position attention module:** capture the spatial dependencies between any two position of the feature maps.
 	
 	* 操作细节：For feature at a certain position, it is updated via aggregating features at all positions with weighted summation, where the weights are decided by the feature similarities between the corresponding two positions. That is, any two positions with similar features can contribute mutual improvement regardless of their distance in spatial dimension.
-2. **channel attention module:** capture the channel dependencies between any two channel maps, and updaye each channel map with a weighted sum of all channel maps.
+2. **channel attention module:** capture the channel dependencies between any two channel maps, and update each channel map with a weighted sum of all channel maps.
 
 ![两个模块](/img/20190609/details.png)
 
