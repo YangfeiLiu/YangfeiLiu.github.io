@@ -6,7 +6,6 @@ date:       2019-08-31
 author:     "柳阳飞"
 tags:
         - dilated convolution
-        - dense upsampling convolution
 	- semantic segmentation
 ---
 
