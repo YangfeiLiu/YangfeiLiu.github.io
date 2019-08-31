@@ -4,9 +4,9 @@ title:      "Understanding Convolution for Semantic Segmentation"
 subtitle:   "HDC DUC"
 date:       2019-08-31
 author:     "柳阳飞"
-tags:
-        - dilated convolution
-	- semantic segmentation
+tags:   
+            - dilated convolution
+	    - semantic segmentation
 ---
 
 #### 主要工作
