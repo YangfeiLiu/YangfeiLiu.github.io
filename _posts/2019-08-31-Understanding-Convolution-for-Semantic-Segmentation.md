@@ -46,4 +46,4 @@ HDC可以直接设计在特征提取网络中，而DUC则直接接在编码器�
 
 [1] [Understanding Convolution for Semantic Segmentation](https://arxiv.org/abs/1702.08502)
 
-[2] 源码[https://github.com/TuSimple/TuSimple-DUC]
+[2] [源码](https://github.com/TuSimple/TuSimple-DUC)
