@@ -7,7 +7,7 @@ author:     "柳阳飞"
 tags:
         - dilated convolution
         - dense upsampling convolution
-		- semantic segmentation
+	- semantic segmentation
 ---
 
 #### 主要工作
@@ -18,11 +18,11 @@ tags:
 
 DUC模块主要解决的特征解码的问题，也就是图像经过特征提取网络之后如何逐像素预测。目前普遍的方法就是插值上采样+卷积(绝大多数网络的方法)以及反卷积(这个叫法可能不对，但是顺口)这两种方法。它们存在的问题就是1）插值上采样是不可学习的。2）反卷积就是在边缘大量填充0。DUC则是完完全全的纯卷积方法，接下来我们看一下DUC是如何操作的。
 
-![model](E:\blogs\YangfeiLiu.github.io\img\20190831\model.png)
+![model](/img/20190831/model.png)
 
 我们有一副图像的大小是$H\times W$，经过特征提取以后维度变成了$h\times w\times c$，其中$h=H/d, w=W/d$，$d$是下采样因子。DUC的做法是通过卷积得到维度为$h\times w\times (d^2 \times L)$，其中$L$是分割任务总的类别数，接下来经过Reshape和Softmax操作得到维度为$H\times W\times L$的分割结果。
 
-![keywords](E:\blogs\YangfeiLiu.github.io\img\20190831\keywords.png)
+![keywords](/img/20190831/keywords.png)
 
 至于其中参数的设计可以参考[源码](https://github.com/TuSimple/TuSimple-DUC/blob/master/tusimple_duc/networks/network_duc_hdc.py)中的设计。
 
@@ -30,7 +30,7 @@ DUC模块主要解决的特征解码的问题，也就是图像经过特征提�
 
 带孔卷积是一种非常好的扩大感受野的方式，然而有一个问题"gridding"，[Effective Use of Dilated Convolutions for Segmenting Small Object Instances in Remote Sensing Imagery](https://arxiv.org/abs/1709.00179)文章也研究了这个问题。
 
-![hdc](E:\blogs\YangfeiLiu.github.io\img\20190831\hdc.png)
+![hdc](/img/20190831/hdc.png)
 
 如上图所示，第一行表示扩张率$r=2$是一个固定值，即在每一层都一样，从左到右可以表示连续三层感知域的变化情况，其中蓝色方格表示对中心红色有贡献的区域，可以看到虽然带孔卷积可以扩大感知域，但是实际上参与计算的元素很少，损失了大量信息，这个体现在1）损失了局部信息，2）一些不相干的信息可能因此聚集。
 
