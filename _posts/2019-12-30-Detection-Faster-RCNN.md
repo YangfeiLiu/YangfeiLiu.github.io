@@ -19,21 +19,21 @@ tags:
 
 2. 卷积金字塔
 
-   <img src="E:\blogs\YangfeiLiu.github.io\img\20191230\filter_pyramids.png" alt="filter_pyramids" style="zoom:50%;" />
+   <img src="./img/20191230/filter_pyramids.png" alt="filter_pyramids" style="zoom:50%;" />
 
    对一幅图像使用多个不同大小的卷积核
 
 3. anchors金字塔（faster rcnn方法更加有效）
 
-   <img src="E:\blogs\YangfeiLiu.github.io\img\20191230\box_pyramids.png" alt="image_pyramids" style="zoom:50%;" />
+   <img src="./img/20191230/box_pyramids.png" alt="image_pyramids" style="zoom:50%;" />
 
    使用不同长宽比和不同尺寸的boxes，（**长宽比：(1:2, 1:1, 2:1)，尺寸：(8, 16, 32)**），共9种anchor boxes
 
 ### Faster RCNN框架
 
-<img src="E:\blogs\YangfeiLiu.github.io\img\20191230\faster_rcnn.png" alt="faster_rcnn" style="zoom:50%;" />
+<img src="./img/20191230/faster_rcnn.png" alt="faster_rcnn" style="zoom:50%;" />
 
-![faster_rcnn details](E:\blogs\YangfeiLiu.github.io\img\20191230\faster_rcnn details.png)上图是以VGG16为conv layers的细节图，可以看到faster rcnn是由两个网络组成的，一个是RPN(region proposal networks)网络和fast rcnn组成，其中RPN网络的作用相当于fast rcnn的selective search算法，可以生成许多候选框，其次，RPN网络还可以对候选框进行初步的筛选和过滤，可以极大的提高检测速度。此外，由于两个网络共享特征，因此也可以进行端到端的训练。
+![faster_rcnn details](./img/20191230/faster_rcnn details.png)上图是以VGG16为conv layers的细节图，可以看到faster rcnn是由两个网络组成的，一个是RPN(region proposal networks)网络和fast rcnn组成，其中RPN网络的作用相当于fast rcnn的selective search算法，可以生成许多候选框，其次，RPN网络还可以对候选框进行初步的筛选和过滤，可以极大的提高检测速度。此外，由于两个网络共享特征，因此也可以进行端到端的训练。
 
 接下来就结合上面的网络结构图来具体讲解一下实现过程。
 
@@ -47,7 +47,7 @@ RPN网络的任务就是初步提供检测边框，它的工作流程是这样�
 
 2. 针对box-classification这一支路，特征首先经过一个1\*1的卷积，输出特征为18(2\*9，其中2表示2分类，需要区分出前景和背景，就是有没有目标，9表示特征图上的一个像素点对应9个box，3种长宽比，3种尺寸)，得到特征图大小为(c,18,w,h)，经过reshape后变成(c,2,w\*9,h)，经过softmax层，最后再reshape成(c,9,w,h)。
 
-   <img src="E:\blogs\YangfeiLiu.github.io\img\20191230\rpn.png" alt="rpn" style="zoom:50%;" />
+   <img src="./img/20191230/rpn.png" alt="rpn" style="zoom:50%;" />
 
    这里需要根据这幅图解释一下9个anchors怎么来的，conv layers的输出大小为(512, 37, 50)，然后根据每个像素3\*3邻域对应9个anchors，所以一共有37\*50\*9=16650个box，这些box如何对应到原图上呢？
 
@@ -90,13 +90,13 @@ Faster RCNN最终的输出是预测的box以及类别，就是判断边框围起
 
 Faster RCNN的损失由两部分组成，第一部分是RPN的损失，第二部分是RCNN的损失，最终是优化这两部分的总的损失，损失计算见下式：
 
-![loss](E:\blogs\YangfeiLiu.github.io\img\20191230\loss.png)
+![loss](./img/20191230/loss.png)
 
 式中，$$L_{cls}$$是交叉熵损失，$$L_{reg}$$是Smooth_l1损失，针对RPN网络，$$p_i$$表示anchor i是目标的概率，$$p_i^*=1$$，针对RCNN网络，则表示目标属于不同类别的概率；$$t_i$$是一个4维向量分别表示(tx, ty,  tw, th)，$$p_i^*L_{reg}$$表示只对正样本做回归预测。这两项通过$$N_{cls}=256$$和$$N_{reg}=2400$$来保持平衡，$$\lambda=10$$。
 
 ### Box Regression计算
 
-![box_regression](E:\blogs\YangfeiLiu.github.io\img\20191230\box_regression.png)
+![box_regression](./img/20191230/box_regression.png)
 
 tx是预测的变化量，实际的box大小是x等。
 
