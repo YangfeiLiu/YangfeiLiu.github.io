@@ -13,7 +13,7 @@ tags:
 
 1. 图像金字塔
 
-   <img src="E:\blogs\YangfeiLiu.github.io\img\20191230\image_pyramids.png" alt="box_pyramids" style="zoom:50%;" />
+   <img src="./img/20191230/image_pyramids.png" alt="box_pyramids" style="zoom:50%;" />
 
    方法就是将图像Resize到不同尺寸后计算特征图
 
