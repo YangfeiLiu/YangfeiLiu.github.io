@@ -33,7 +33,7 @@ tags:
 
 <img src="/img/20191230/faster_rcnn.png" alt="faster_rcnn" style="zoom:50%;" />
 
-![faster_rcnn details](/img/20191230/faster_rcnn details.png)上图是以VGG16为conv layers的细节图，可以看到faster rcnn是由两个网络组成的，一个是RPN(region proposal networks)网络和fast rcnn组成，其中RPN网络的作用相当于fast rcnn的selective search算法，可以生成许多候选框，其次，RPN网络还可以对候选框进行初步的筛选和过滤，可以极大的提高检测速度。此外，由于两个网络共享特征，因此也可以进行端到端的训练。
+![faster_rcnn details](/img/20191230/faster_rcnn_details.png)上图是以VGG16为conv layers的细节图，可以看到faster rcnn是由两个网络组成的，一个是RPN(region proposal networks)网络和fast rcnn组成，其中RPN网络的作用相当于fast rcnn的selective search算法，可以生成许多候选框，其次，RPN网络还可以对候选框进行初步的筛选和过滤，可以极大的提高检测速度。此外，由于两个网络共享特征，因此也可以进行端到端的训练。
 
 接下来就结合上面的网络结构图来具体讲解一下实现过程。
 
