@@ -26,7 +26,7 @@ tags:
 
 ### 介绍网络
 
-![resnest block](E:\blogs\YangfeiLiu.github.io\img\20200521\resnest block.png)
+![resnest block](/img/20200521/resnest block.png)
 
 上图最右边就是"Split-Attention block"，但从结构上来看，将虚线框看作一个子模块，该结构就是ResNeXt网络的结构。
 
@@ -36,7 +36,7 @@ tags:
 
 ##### Split Attention in Cardinal Groups
 
-![split-attention](E:\blogs\YangfeiLiu.github.io\img\20200521\split-attention.png)
+![split-attention](/img/20200521/split-attention.png)
 
 上图是ResNeSt block中的Split-Attention子模块。第$K$个Cardinal Groups表示为$\hat U^K=\sum_{j=R(k-1)+1}^{Rk}U_j$，也就是每一个Cardinal Groups的输出是该组内每一个划分输出之和。文章中公式$s^k_c=\frac{1}{HW}\sum_{i=i}^H\sum_{j=1}^W\hat U_c^k(i,j)$其实表示的是全局平局池化操作，文章中说通过全局平均池化将全局信息和通道信息结合起来。最终的输出$V_c^k=\sum_{i=1}^R\alpha_i^k(c)U_{R(k-1)+i}$是一个加权融合，其中权重$\alpha_i^k(c)$由soft attention得到。这一部分操作较多，比较复杂，建议结合[文章](https://hangzhang.org/files/resnest.pdf)和[代码](https://github.com/zhanghang1989/ResNeSt/blob/master/resnest/torch/splat.py)理解具体操作。
 
